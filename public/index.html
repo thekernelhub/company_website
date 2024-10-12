@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>TheKernelHub</title>
+    <link rel="icon" href="/assets/3.ico" type="image/x-icon">
+
+    <!-- League Spartan Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@269&display=swap" rel="stylesheet">
+
+    <!-- Material Icons Outlined -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <!-- Leaflet CSS -->
+    <link href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!-- Font Awesome
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="spinner"></div>
+  </div>
+  <div id="main-content" style="display: none;" >
+    <div class="container-fluid px-0">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#home">
+            <!-- <span class="material-icons-outlined me-1">important_devices</span> -->
+            <!-- <img class="rounded-circle me-1" src="1.jpg" alt="Logo"> -->
+            <img src="/assets/3.png" width="45" height="20" class="d-inline-block align-top me-5" alt="TKH Logo">
+
+          </a>
+          <button
+            type="button"
+            class="navbar-toggler"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            //data-bs-target="#navbarNav"
+            aria-controls="navbarSupportedContent"
+            //aria-controls="navbarNav" 
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            >
+            <span class="material-icons-outlined m-auto text-white" id="togglerIcon">
+              menu
+            </span>
+            <!-- <i class="navbar-toggler-icon" id="togglerIcon">menu</i> -->
+            <!-- <span class="material-icons-outlined m-auto text-primary">palette</span> -->
+          </button>
+
+          <div class="container px-3">
+            <div class="collapse navbar-collapse" 
+                  id="navbarSupportedContent"
+                  //id="navbarNav"
+                  >
+              <ul class="navbar-nav ms-auto me-2 my-3 my-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link me-lg-3 active" aria-current="page" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-lg-3" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-lg-3" href="#projects">Projects</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-lg-3" href="#testimonials">Testimonials</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-lg-3" href="index2.html">Contact Us</a>
+                </li>
+                <!-- <li class="nav-item">
+                  <a class="nav-link me-lg-3" href="page2.html"><span class="material-icons-outlined">call</span></a>
+                </li> -->
+                <!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown link
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li> -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+
+      <!-- Hero -->
+      <header class="bg-light py-5" id = "home">
+        <video autoplay muted loop id="video-background1">
+          <source src="/assets/bg1.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+        <div class="container px-5 content">
+          <div class="row align-items-center">
+            <div class="col-lg-8 col-xl-7 col-xxl-6">
+              <div class="my-5">
+                <h2 class="text-center fw-bold mb-2"></h2>
+                <h2 class="text-primary text-center fw-bold mb-2 text-white animated-text content2">Let us spearhead your Digital <span id ="changing-word">Transformation</span></h2>
+                <p class="lead text-muted mb-4">
+                  
+                </p>
+                <div class="d-grid gap-3 d-sm-flex justify-content-center">
+                  <a class="btn btn-danger btn-large text-uppercase text-white shadow-lg rounded" href="index2.html">
+                    Contact Us
+                    <span class="material-icons-outlined ms-2">call</span>
+                  </a>
+                  <a class="btn btn-outline-danger btn-large text-uppercase text-white shadow-lg rounded" href="#projects">
+                    Our Projects
+                    <span class="material-icons-outlined ms-2">manage_search</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-5 col-xxl-6 justify-content-center">
+              <!-- <img class="img-fluid rounded-3 my-5" src="assets/1.jpg" alt="Hero Image"> -->
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- End Hero -->
+
+      <main>
+        <!-- About -->
+        <section id="about" class="text-center m-5">
+          <div class="container py-5">
+            <div class="row justify-content-center">
+              <h2 class="fw-bold fs-2">About</h2>
+              <p class=" text-white mb-5 fs-6">
+                We are a team of experts in the field of Cybersecurity, Networking and Software Engineering. Our Goal and Vision are to secure every organisation, down to each Stakeholder, from Cyber Threats/Crimes. We are here to help you on your journey towards security transformation.
+              </p>
+            </div>
+          </div>
+          <div class="container mb-5">
+            <div class="row">
+              <div class="col-lg-4 mx-auto mb-5">
+                <div class="d-flex mb-5 about">
+                  <span class="material-icons-outlined m-auto text-white">password</span>
+                </div>
+                <h4 class ="typewriter" >Cybersecurity</h4>
+                <p class="text-muted mb-0">
+                  <!-- I create beautiful, modern designs optimized for multiple
+                  color modes (light and dark themes). -->
+                </p>
+              </div>
+              <div class="col-lg-4 mx-auto mb-5">
+                <div class="d-flex mb-5 about">
+                  <span class="material-icons-outlined m-auto text-white ">lan</span>
+                </div>
+                <h4>Infrastructure and Security</h4>
+                <p class="text-muted mb-0">
+                  <!-- I develop responsive, scalable, and fast applications using
+                  the best standards and coding practices. -->
+                </p>
+              </div>
+              <div class="col-lg-4 mx-auto mb-5">
+                <div class="d-flex mb-5 about">
+                  <span class="material-icons-outlined m-auto text-white ">cloud</span>
+                </div>
+                <h4>Cloud Services</h4>
+                <p class="text-muted mb-0">
+                  <!-- Once the application is ready, I will help you launch it and
+                  teach you how to update and maintain it. -->
+                </p>
+              </div>
+              <div class="col-lg-4 mx-auto mb-3">
+                <div class="d-flex mb-5 about">
+                  <span class="material-icons-outlined m-auto text-white ">terminal</span>
+                </div>
+                <h4>Software Engineering</h4>
+                <p class="text-muted mb-0">
+                  <!-- Once the application is ready, I will help you launch it and
+                  teach you how to update and maintain it. -->
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- End About -->
+
+        <!-- <hr> -->
+
+        <!-- Projects -->
+        <section id="projects" class="text-center py-5 bg-light">
+          <video autoplay muted loop id="video-background2">
+            <source src="/assets/bg3.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video>
+          <div class="container py-4" style="z-index: 10;">
+            <div class="row justify-content-center">
+              <h2 class="fw-bold text-black fs-2" style="z-index: 10;">Projects</h2>
+              <p class="text-black mb-5 fs-6" style="z-index: 10;">View some of our latest projects</p>
+            </div>
+          </div>
+          <div class="container mb-5" >
+            <div class="row">
+              <div class="col-lg-4 mx-auto mb-5 animate5">
+                <div class="card h-100 shadow-lg rounded border-0 bg-light">
+                  <img class="card-img-top" src="/assets/p1.png" alt="Project 1">
+                  <div class="card-body p-4">
+                    <h5 class="card-title mb-3 text-black">test</h5>
+                    <div class="mb-2">
+                      <div class="badge bg-danger rounded-pill p-2 shadow-lg">Django</div>
+                      <div class="badge bg-danger rounded-pill p-2 shadow-lg">React</div>
+                      <div class="badge bg-danger rounded-pill p-2 shadow-lg">Material UI</div>
+                    </div>
+                    <p class="card-text">
+                      test
+                    </p>
+                  </div>
+                  <div class="card-footer bg-transparent mb-3">
+                    <a
+                      class="btn btn-outline-danger btn-sm text-uppercase"
+                      href=""
+                      target="_blank"
+                    >
+                      <span class="material-icons-outlined btn-outline-danger me-1 shadow-lg">code</span>
+                      Source Code
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 mx-auto mb-5 animate5">
+                <div class="card h-100 shadow-lg rounded border-0 bg-light">
+                  <img class="card-img-top" src="/assets/p1.png" alt="Project 2">
+                  <div class="card-body p-4">
+                    <h5 class="card-title mb-3">test</h5>
+                    <div class="mb-2">
+                      <div class="badge bg-danger rounded-pill p-2 shadow-lg">Django</div>
+                      <div class="badge bg-danger rounded-pill p-2 shadow-lg">React</div>
+                      <div class="badge bg-danger rounded-pill p-2 shadow-lg">Material UI</div>
+                    </div>
+                    <p class="card-text">
+                      test
+                    </p>
+                  </div>
+                  <div class="card-footer bg-transparent mb-3">
+                    <a
+                      class="btn btn-outline-danger btn-sm text-uppercase"
+                      href=""
+                      target="_blank"
+                    >
+                      <span class="material-icons-outlined  me-1 shadow-lg">code</span>
+                      Source Code
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 mx-auto mb-5 animate5">
+                <div class="card h-100 shadow-lg rounded border-0 bg-light">
+                  <img class="card-img-top" src="/assets/p1.png" alt="Project 3">
+                  <div class="card-body p-4">
+                    <h5 class="card-title mb-3">test</h5>
+                    <div class="mb-2">
+                      <div class="badge bg-danger rounded-pill p-2 shadow-lg">Django</div>
+                      <div class="badge bg-danger rounded-pill p-2 shadow-lg">React</div>
+                      <div class="badge bg-danger rounded-pill p-2 shadow-lg">Material UI</div>
+                    </div>
+                    <p class="card-text">
+                      test
+                    </p>
+                  </div>
+                  <div class="card-footer bg-transparent mb-3">
+                    <a
+                      class="btn btn-outline-danger btn-sm text-uppercase"
+                      href=""
+                      target="_blank"
+                    >
+                      <span class="material-icons-outlined me-1 shadow-lg">code</span>
+                      Source Code
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- End Projects -->
+
+        <!-- <hr> -->
+
+        <!-- Testimonials -->
+        <section id="testimonials" class="text-center py-5 ">
+          <!-- <video autoplay muted loop id="video-background2">
+            <source src="assets/bg2.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+          </video> -->
+          <div class="container py-5 content3">
+            <div class="row justify-content-center">
+              <h2 class="fw-bold fs-2" id ="typewriter-text">Client Testimonials</h2>
+              <p class="fs-6 text-white mb-5">Check what clients have said about our work</p>
+            </div>
+          </div>
+          <div class="container mb-5">
+            <div class="row">
+              <div class="col-lg-4 mx-auto mb-5">
+                <div class="text-center fs-4 fst-italic mb-4 px-2">
+                  test
+                </div>
+                <div class="d-flex align-items-center justify-content-center testimonial">
+                  <img class="rounded-circle me-3 shadow-lg" src="/assets/user1.png" alt="User 1">
+                  <div class="fw-bold">
+                    Amy Jones
+                    <span class="text-primary mx-1">/</span>
+                    CEO, Company 1
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 mx-auto mb-5">
+                <div class="text-center fs-4 fst-italic mb-4 px-2">
+                  test
+                </div>
+                <div class="d-flex align-items-center justify-content-center testimonial">
+                  <img class="rounded-circle me-3 shadow-lg" src="/assets/user2.png" alt="User 2">
+                  <div class="fw-bold">
+                    James Smith
+                    <span class="text-primary mx-1">/</span>
+                    CEO, Company 2
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 mx-auto mb-5">
+                <div class="text-center fs-4 fst-italic mb-4 px-2">
+                  test
+                </div>
+                <div class="d-flex align-items-center justify-content-center testimonial">
+                  <img class="rounded-circle me-3 shadow-lg" src="/assets/user3.png" alt="User 3">
+                  <div class="fw-bold">
+                    Mary Richards
+                    <span class="text-primary mx-1">/</span>
+                    CEO, Company 3
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- End Testimonials -->
+
+        <!-- <hr> -->
+
+        <!-- Contact -->
+        <!-- <section id="contact" class="text-center py-3 bg-light">
+          <div class="container py-5">
+            <div class="row justify-content-center">
+              <h2 class="fw-bold fs-2 text-black">Contact Details</h2>
+              <p class="fs-6 mb-2 text-black">
+                Let us spearhead your digital transformation!
+              </p>
+            </div>
+          </div>
+          <div class="container mb-3">
+            <div class="row">
+              <div class="col-xl-5 col-xxl-6 mb-5">
+                <div id="map" class="shadow-lg"></div>
+              </div>
+              <div class="col-lg-8 col-xl-7 col-xxl-6 mb-5 text-black">
+                <div class="mb-5">
+                  <h6 class="text-uppercase mb-2">Address</h6>
+                  <p class="lead mb-0">Colombo, Sri Lanka</p>
+                </div>
+                <div class="mb-5">
+                  <h6 class="text-uppercase mb-2">Phone</h6>
+                  <p class="lead mb-0">+94775676887</p>
+                </div>
+                <div class="mb-5">
+                  <h6 class="text-uppercase mb-2">Email</h6>
+                  <a  href="mailto:thekernelhub@gmail.com" class="text-decoration-none" style="color: rgb(0, 0, 0);">
+                  <p class="lead mb-0">thekernelhub@gmail.com</p>
+                </a>
+                </div>
+                <div class="mb-3">
+                  <h6 class="text-uppercase mb-2">Social Media</h6>
+                    <a  href="https://www.instagram.com/thekernelhub/" class="text-decoration-none" target="_blank" >
+                      <i class="bi bi-instagram animate1" style="font-size: 2rem; color: rgb(0, 0, 0);" alt="Instagram icon" ></i>
+                    </a>
+                    <a  href="https://www.linkedin.com/company/thekernelhub" class="text-decoration-none" target="_blank" >
+                      <i class="bi bi-linkedin ms-3 animate2" style="font-size: 2rem; color: rgb(0, 0, 0);" alt="Linkedin icon" ></i>
+                    </a>
+                    <a  href="https://www.threads.net/@thekernelhub" class="text-decoration-none" target="_blank" >
+                      <i class="bi bi-threads ms-3 animate3" style="font-size: 2rem; color: rgb(0, 0, 0);" alt="Threads icon" ></i>
+                    </a>
+                    <a  href="https://medium.com/@thekernelhub" class="text-decoration-none" target="_blank" >
+                      <i class="bi bi-medium ms-3 animate4" style="font-size: 2rem; color: rgb(0, 0, 0);" alt="Medium icon" ></i>
+                    </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section> -->
+
+        <!-- End Contact -->
+      </main>
+    </div>
+
+    <!-- <hr> -->
+
+    <!-- Footer -->
+    <footer id = "footer" class="text-center py-3 pt-5 bg-light ">
+
+      <div class="container mb-3 py-3">
+        <div class="row">
+          <div class="col-lg-3 col-xl-3 col-xxl-3 mb-4 text-black text-start">
+            <div class="mb-5">
+              <h6 class="text-uppercase mb-2">
+                <a class="nav-link me-lg-3" href="index.html">Home</a> 
+              </h6>
+            </div>
+            <div class="mb-5">
+              <h6 class="text-uppercase mb-2" > 
+                <a class="nav-link me-lg-3" href="#about">About</a> 
+              </h6>
+            </div>
+            <div class="mb-5">
+              <h6 class="text-uppercase mb-2" >
+                <a class="nav-link me-lg-3" href="#projects">Projects</a>
+              </h6>
+            </div>
+            <div class="mb-5">
+              <h6 class="text-uppercase mb-2" > 
+                <a class="nav-link me-lg-3" href="#testimonials">Testimonials</a>
+              </h6>
+            </div>
+            <div class="mb-5">
+              <h6 class="text-uppercase mb-2" >
+                <a class="nav-link me-lg-3" href="index2.html">Contact Us</a>
+              </h6>
+            </div>
+          </div>
+
+          
+
+          <div class="col-lg-3 col-xl-3 col-xxl-3 mb-4 text-black text-start d-none d-sm-block ">
+            <div class="mb-5">
+              <h6 class="text-uppercase mb-2">Address</h6>
+              <p class="lead mb-0">Colombo, Sri Lanka</p>
+            </div>
+            <div class="mb-5">
+              <h6 class="text-uppercase mb-2">Phone</h6>
+              <p class="lead mb-0">+94775676887</p>
+            </div>
+            <div class="mb-5">
+              <h6 class="text-uppercase mb-2">Email</h6>
+              <a  href="mailto:thekernelhub@gmail.com" class="text-decoration-none" style="color: rgb(0, 0, 0);">
+              <p class="lead mb-0">thekernelhub@gmail.com</p>
+            </a>
+            </div>
+            <div class="mb-3">
+              <h6 class="text-uppercase mb-2">Social Media</h6>
+                <a  href="https://www.instagram.com/thekernelhub/" class="text-decoration-none" target="_blank" >
+                  <i class="bi bi-instagram " style="font-size: 2rem; color: rgb(0, 0, 0);" alt="Instagram icon" ></i>
+                </a>
+                <a  href="https://www.linkedin.com/company/thekernelhub" class="text-decoration-none" target="_blank" >
+                  <i class="bi bi-linkedin ms-3 " style="font-size: 2rem; color: rgb(0, 0, 0);" alt="Linkedin icon" ></i>
+                </a>
+                <a  href="https://www.threads.net/@thekernelhub" class="text-decoration-none" target="_blank" >
+                  <i class="bi bi-threads ms-3 " style="font-size: 2rem; color: rgb(0, 0, 0);" alt="Threads icon" ></i>
+                </a>
+                <a  href="https://medium.com/@thekernelhub" class="text-decoration-none" target="_blank" >
+                  <i class="bi bi-medium ms-3 " style="font-size: 2rem; color: rgb(0, 0, 0);" alt="Medium icon" ></i>
+                </a>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-xl-6 col-xxl-6 mb-4">
+            <div id="map" class="shadow-lg"></div>
+          </div>
+
+          
+        </div>
+      </div>
+      
+      <div class="container px-5 mb-1 mt-1 text-black fw-normal">Copyright &copy; 2024 <img src="/assets/3.png" width="45" height="20" class="d-inline-block text-center" alt="TKH Logo">
+      </div>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="/js/scripts.js"></script>
+  </div>
+  </body>
+</html>
