@@ -313,6 +313,10 @@ input[type="text"] {
   border-radius: 20px; /* Adjust the value as needed */
 }
 
+input[type="tel"] {
+  border-radius: 20px; /* Adjust the value as needed */
+}
+
 input[type="email"] {
   border-radius: 20px; /* Adjust the value as needed */
 }

@@ -127,69 +127,45 @@ document.addEventListener("DOMContentLoaded", function() {
   
   
   // Country selector
-
-    fetch('https://restcountries.com/v3.1/all') // GeoNames API endpoint for all countries
-      .then(response => response.json())
-      .then(data => {
-        const countriesList = document.getElementById('countryInput');
-        data.forEach(country => {
-          const option = document.createElement('option');
-          option.value = country.name.common; // Use the common name of the country
-          countriesList.appendChild(option);
-        });
-      })
-      .catch(error => console.error('Error fetching countries:', error));
-
+fetch('https://restcountries.com/v3.1/all') // RESTCountries API endpoint for all countries
+.then(response => response.json())
+.then(data => {
+  const countriesList = document.getElementById('countryInput');
+  data.forEach(country => {
+    const option = document.createElement('option');
+    option.value = country.name.common; // Use the common name of the country
+    countriesList.appendChild(option);
+  });
+})
+.catch(error => console.error('Error fetching countries:', error));
 
 // Phone number validator
-
 function validatePhoneNumber() {
-  const phoneInput = document.getElementById('phoneInput');
-  const phoneError = document.getElementById('phoneError');
-  const phoneNumber = phoneInput.value;
-  const phoneRegex = /^\d{3}\d{3}\d{4}$/; // Example regex for format XXXXXXXXXX
+const phoneInput = document.getElementById('phoneInput');
+const phoneError = document.getElementById('phoneError');
+const phoneNumber = phoneInput.value;
 
-  if (phoneRegex.test(phoneNumber)) {
-    phoneError.textContent = ''; // Clear error message
-    phoneInput.classList.remove('invalid-input'); // Remove red border
-    // alert('Valid phone number!');
-  } else {
-    phoneError.textContent = 'Invalid phone number! Please enter a number in the format XXXXXXXXXX.';
-    phoneInput.classList.add('invalid-input'); // Add red border
-  }
+// Phone number should match format XXXXXXXXXX (10 digits)
+const phoneRegex = /^\d{3}\d{3}\d{4}$/;
+
+if (phoneRegex.test(phoneNumber)) {
+  phoneError.textContent = ''; // Clear error message
+  phoneInput.classList.remove('invalid-input'); // Remove red border
+} else {
+  phoneError.textContent = 'Invalid phone number! Please enter a number in the format XXXXXXXXXX.';
+  phoneInput.classList.add('invalid-input'); // Add red border
+}
 }
 
 
-// Contact us form
+document.getElementById('contactForm').addEventListener('submit', function (event) {
+  event.preventDefault(); // Prevent page reload
 
-document.getElementById('ContactUs').addEventListener('submit', async function(event) {
-  event.preventDefault();
-  
-  const formData = new FormData(this);
-  const data = {
-      nameInput: formData.get('nameInput'),
-      emailInput: formData.get('emailInput'),
-      countryInput: formData.get('countryInput'),
-      phoneInput: formData.get('phoneInput'),
-      messageinput: formData.get('messageinput')
-  };
+  validatePhoneNumber(); // Check phone validation
 
-  try {
-      const response = await fetch('/contact', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-      });
-
-      if (response.ok) {
-          alert('Message sent successfully!');
-      } else {
-          alert('Failed to send message.'+ response.status);
-      }
-  } catch (error) {
-      console.error('Error:', error);
-      alert('Failed to send message.' + error.message);
+  const phoneError = document.getElementById('phoneError').textContent;
+  if (phoneError) {
+      return; // Don't proceed if there is an error
   }
+
 });

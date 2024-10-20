@@ -1,15 +1,25 @@
 require('dotenv').config();
-
 const express = require('express');
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
 const path = require('path');
 
+const cors = require('cors');
+
 const app = express();
 const port = 3000;
 
-// Middleware
-app.use(bodyParser.json());
+// Middleware to parse request body
+// app.use(bodyParser.json());
+// Parse application/json
+app.use(express.json());
+
+// Parse application/x-www-form-urlencoded (for form submissions)
+app.use(express.urlencoded({ extended: true }));
+
+app.use(cors());
+
+// Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve JavaScript files from the 'scripts' directory
@@ -26,37 +36,51 @@ app.get('/contact', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index2.html'));
 });
 
-// Route to handle form submission
-app.post('/contact', (req, res) => {
-    const { nameInput, emailInput, countryInput, phoneInput, messageinput  } = req.body;
+// Nodemailer transport configuration (Example: Gmail SMTP)
+const transporter = nodemailer.createTransport({
+  service: 'gmail', // You can use other services like Outlook, Yahoo, etc.
+  auth: {
+    user: process.env.EMAIL_USER, // Use environment variables
+    pass: process.env.EMAIL_PASS, // Use environment variables
+  },
+});
 
-    // Create a transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.EMAIL, // Your email address stored in an environment variable
-            pass: process.env.EMAIL_PASSWORD // Your email password stored in an environment variable
+// POST endpoint to send emails
+app.post('/email', (req, res) => {
+  const { nameInput, emailInput, countryInput, phoneInput, messageinput } = req.body;
+
+  // Compose email details
+  const mailOptions = {
+    from: emailInput, // Sender's email address
+    to: 'thekernelhub@gmail.com', // Your email address where you want to receive the messages
+    subject: `Message from ${nameInput} (${emailInput})`, // Email subject
+    text: `
+      Name: ${nameInput}
+      Email: ${emailInput}
+      Country: ${countryInput}
+      Phone: ${phoneInput}
+      Message: ${messageinput}
+    `, // Email body in plain text
+  };
+
+  // Send the email using Nodemailer
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error('Error sending email:', error);
+      return res.status(500).send('Error sending email');
     }
-    });
-
-    // Setup email data
-    let mailOptions = {
-        from: emailInput,
-        to: process.env.EMAIL, // Replace with your email address
-        subject: `New Contact Us Message from ${name}`,
-        text: `Name: ${nameInput}\nEmail: ${emailInput}\nCountry: ${countryInput}\nPhone-Number: ${phoneInput}\nMessage: ${messageinput}`
-    };
-
-    // Send email
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.log(error);
-            return res.status(500).send('Failed to send message.');
-        }
-        res.status(200).send('Message sent successfully!');
-    });
+    console.log('Email sent: ' + info.response);
+    res.status(200).send('Email sent successfully');
+  });
 });
 
+// Start the server
 app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });
+
+// Start the server
+// const PORT = process.env.PORT;
+// app.listen(PORT, () => {
+//     console.log(`Server is running on port ${process.env.PORT}`);
+// });
