@@ -154,63 +154,73 @@
             </div>
           </div>
           <div class="container mb-2">
+            <form id="contactForm">
+                <div class=" row g-2 mb-2">
+                  <div class="col-md">
+                    <div class="form-floating">
+                      <input type="text" class="form-control shadow-lg" id="nameInput" placeholder="" >
+                      <label for="nameInput" style="color: rgb(160, 160, 160);">Name</label>
+                    </div>
+                  </div>
+                </div>
 
-            <div class=" row g-2 mb-2">
-              <div class="col-md">
-                <div class="form-floating">
-                  <input type="text" class="form-control shadow-lg" id="nameInput" placeholder="" >
-                  <label for="nameInput" style="color: rgb(160, 160, 160);">Name</label>
+                <div class=" row g-2 mb-2">
+                  <div class="col-md">
+                    <div class="form-floating">
+                      <input type="email" class="form-control shadow-lg" id="emailInput" placeholder="name@example.com" >
+                      <label for="emailInput" style="color: rgb(160, 160, 160);">Email address</label>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+                
+                <div class=" row g-2 mb-2">
+                  <div class="col-md">
+                    <div class="form-floating ">
+                      <!-- <input type="text" class="form-control shadow-lg" id="countryInput" list="countries" name="country" placeholder="country">
+                      <label for="countryInput" style="color: rgb(160, 160, 160);">Select a country:</label>
+                      <datalist id="countries"></datalist> -->
+                      <input type="text" list="countryList" id="countryInput" class="form-control shadow-lg" placeholder="Country" required>
+                      <datalist id="countryList"></datalist>
+                      <label for="countryInput" style="color: rgb(160, 160, 160);">Country</label>
+                      <!-- <label for="exampleFormControlInput1" class="form-label text-white">Email address</label> -->
+                    </div>
+                  </div>
+                </div>
 
-            <div class=" row g-2 mb-2">
-              <div class="col-md">
-                <div class="form-floating">
-                  <input type="email" class="form-control shadow-lg" id="emailInput" placeholder="name@example.com" >
-                  <label for="emailInput" style="color: rgb(160, 160, 160);">Email address</label>
+                <div class=" row g-2 mb-2">
+                  <div class="col-md">
+                    <div class="form-floating ">
+                      <!-- <input type="text" class="form-control shadow-lg" id="phoneInput" name="phone" placeholder="e.g., 123-456-7890">
+                      <label for="phoneInput" class="form-label " style="color: rgb(160, 160, 160);">Phone Number</label>
+                      <span class="error-message" id="phoneError"></span> -->
+                      <input type="tel" class="form-control shadow-lg" id="phoneInput" placeholder="Phone number" required onblur="validatePhoneNumber()">
+                      <label for="phoneInput" style="color: rgb(160, 160, 160);">Phone Number</label>
+                      <span id="phoneError" class="text-danger"></span> <!-- Error message for phone number validation -->
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            
-            <div class=" row g-2 mb-2">
-              <div class="col-md">
-                <div class="form-floating ">
-                  <input type="text" class="form-control shadow-lg" id="countryInput" list="countries" name="country" placeholder="country">
-                  <label for="countryInput" style="color: rgb(160, 160, 160);">Select a country:</label>
-                  <datalist id="countries"></datalist>
-                  <!-- <label for="exampleFormControlInput1" class="form-label text-white">Email address</label> -->
+                
+                <div class=" row g-2 mb-2">
+                  <div class="col-md">
+                    <div class="form-floating">
+                      <textarea class="form-control shadow-lg" placeholder="Leave your message here" id="messageinput" style="height: 100px;"></textarea>
+                      <label for="messageinput" style="color: rgb(160, 160, 160);">Message</label>
+                      <!-- <label for="exampleFormControlTextarea1" class="form-label text-white">Message</label> -->
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
 
-            <div class=" row g-2 mb-2">
-              <div class="col-md">
-                <div class="form-floating ">
-                  <input type="text" class="form-control shadow-lg" id="phoneInput" name="phone" placeholder="e.g., 123-456-7890">
-                  <label for="phoneInput" class="form-label " style="color: rgb(160, 160, 160);">Phone Number</label>
-                  <span class="error-message" id="phoneError"></span>
+                <div class=" row g-2 mb-2">
+                  <div class="mb-3">
+                    <button type="submit" class="btn btn-light btn-lg mb-3 mt-3" onclick="validatePhoneNumber()" id ="subbtn">Submit</button> 
+                    <!-- removed from above  -->
+                  </div>
                 </div>
-              </div>
-            </div>
-            
-            <div class=" row g-2 mb-2">
-              <div class="col-md">
-                <div class="form-floating">
-                  <textarea class="form-control shadow-lg" placeholder="Leave your message here" id="messageinput" style="height: 100px;"></textarea>
-                  <label for="messageinput" style="color: rgb(160, 160, 160);">Message</label>
-                  <!-- <label for="exampleFormControlTextarea1" class="form-label text-white">Message</label> -->
-                </div>
-              </div>
-            </div>
 
-            <div class=" row g-2 mb-2">
-              <div class="mb-3">
-                <button type="submit" class="btn btn-light btn-lg mb-3 mt-3" onclick="validatePhoneNumber()" id ="subbtn">Submit</button> 
-                <!-- removed from above  -->
-              </div>
-            </div>
-            </div>
+                <!-- Success/Failure message area -->
+                <div id="statusMessageContainer"></div>
+            </form>
+          </div>
         </section>
         <!-- End Contact -->
       </main>
@@ -306,6 +316,60 @@
     
     <!-- Custom JS -->
     <script src="/js/scripts.js"></script> 
+
+    <!-- ? jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $("form").on("submit", e => {
+        e.preventDefault(); // Prevent the default form submission
+    
+        // Collect form data
+        const nameInput = $("#nameInput").val().trim();
+        const emailInput = $("#emailInput").val().trim();
+        const countryInput = $("#countryInput").val().trim();
+        const phoneInput = $("#phoneInput").val().trim();
+        const messageinput = $("#messageinput").val().trim();
+    
+        const data = {
+          nameInput,
+          emailInput,
+          countryInput,
+          phoneInput,
+          messageinput
+        };
+    
+        // POST the form data to the /email endpoint
+        $.post("http://localhost:3000/email", data)
+          .then(() => {
+            // Display success message
+            showMessage('Email sent successfully!', 'success');
+          })
+          .catch(() => {
+            // Display error message
+            showMessage('Error sending email. Please try again.', 'error');
+          });
+      });
+    
+      // Function to show message
+      function showMessage(message, type) {
+        // Remove existing message if any
+        $('#statusMessage').remove();
+    
+        // Create a new message element
+        const messageElement = $('<div id="statusMessage" class="alert" role="alert"></div>');
+        messageElement.text(message);
+    
+        // Add Bootstrap classes based on the type of message
+        if (type === 'success') {
+          messageElement.addClass('alert-success'); // For success
+        } else {
+          messageElement.addClass('alert-danger'); // For error
+        }
+    
+        // Append the message element below the form
+        $('#contactForm').after(messageElement);
+      }
+    </script>
   </div>
   </body>
 </html>
