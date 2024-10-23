@@ -7,7 +7,6 @@ body,html {
   color: white;
   overflow: auto; /* Hide scrollbars */
 
-
 }
 
 #loading-screen {
@@ -49,7 +48,15 @@ body,html {
 
 #main-content {
   overflow: auto; /* Restore scrollbars for the main content */
+  position: relative;  /* Ensures content remains above the video */
+  z-index: 1;  /* This isn't always necessary but helps ensure the content is on top */
 }
+
+/* #main-content1 {
+  overflow: auto; 
+  position: relative;  
+  z-index: 1;  
+} */
 
 .material-icons-outlined {
   vertical-align: middle;
@@ -133,14 +140,17 @@ header {
 /* header video section */
 
 #video-background1 {
-  position: absolute;
+  position: fixed;  /* Fixes the video to the viewport, even on scroll */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  opacity: 1;
+  object-fit: cover;  /* Ensures the video covers the whole area without distortion */
+  opacity: 1;  /* Full visibility */
+  z-index: -1000;  /* Places the video behind all other elements */
+  pointer-events: none;  /* Ensures the video doesn't interfere with clicking or interacting with other content */
 }
+
 
 #projects {
   position: relative;
@@ -150,7 +160,7 @@ header {
 
 }
 
-#video-background2 {
+/* #video-background2 {
   position:absolute;
   top: 0;
   left: 0;
@@ -158,11 +168,11 @@ header {
   height: 100%;
   object-fit: cover;
   opacity: 1;
-}
+} */
 
 /* Center content vertically */
 .content {
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -354,5 +364,13 @@ h6{
   transition: color 0.3s ease; /* Smooth transition for color change */
 }
 h6:hover {
+  color: #b90e0e; /* Change color on hover */
+}
+
+
+i{
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+i:hover {
   color: #b90e0e; /* Change color on hover */
 }
