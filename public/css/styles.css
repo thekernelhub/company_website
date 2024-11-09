@@ -7,7 +7,6 @@ body,html {
   color: white;
   overflow: auto; /* Hide scrollbars */
 
-
 }
 
 #loading-screen {
@@ -49,7 +48,15 @@ body,html {
 
 #main-content {
   overflow: auto; /* Restore scrollbars for the main content */
+  position: relative;  /* Ensures content remains above the video */
+  z-index: 1;  /* This isn't always necessary but helps ensure the content is on top */
 }
+
+/* #main-content1 {
+  overflow: auto; 
+  position: relative;  
+  z-index: 1;  
+} */
 
 .material-icons-outlined {
   vertical-align: middle;
@@ -104,15 +111,6 @@ h2.text-center.fw-bold.mb-2 {
   color: black;
 }
 
-/* .navbar-brand {
-  color: white;
-} */
-
-
-/* .navbar1 {
-  position:relative;
-} */
-
 .animated-text {
   font-size: 30px;
   overflow: hidden;
@@ -133,14 +131,17 @@ header {
 /* header video section */
 
 #video-background1 {
-  position: absolute;
+  position: fixed;  /* Fixes the video to the viewport, even on scroll */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  opacity: 1;
+  object-fit: cover;  /* Ensures the video covers the whole area without distortion */
+  opacity: 1;  /* Full visibility */
+  z-index: -1000;  /* Places the video behind all other elements */
+  pointer-events: none;  /* Ensures the video doesn't interfere with clicking or interacting with other content */
 }
+
 
 #projects {
   position: relative;
@@ -150,7 +151,7 @@ header {
 
 }
 
-#video-background2 {
+/* #video-background2 {
   position:absolute;
   top: 0;
   left: 0;
@@ -158,11 +159,11 @@ header {
   height: 100%;
   object-fit: cover;
   opacity: 1;
-}
+} */
 
 /* Center content vertically */
 .content {
-  position: absolute;
+  position: relative;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -268,11 +269,50 @@ header {
   overflow: auto;
 } */
 
+/* Default: Hide dropdown menu by default */
+.dropdown-menu {
+  display: none;
+}
 
-/* CSS for hover effect
-.navbar.navbar-light .navbar-nav .nav-link  {
-  transition: color 0.3s ease; /* Smooth transition for color change */
-/* } */ 
+/* Show dropdown on hover for all screen sizes */
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Large screens: Show dropdown below the nav-item */
+@media (min-width: 992px) {
+  .nav-item.dropdown:hover .dropdown-menu {
+    position: absolute;
+    top: 100%; /* Aligns it below the nav item */
+    left: 0;
+    background-color: black;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Small screens: Align dropdown to the right */
+@media (max-width: 991px) {
+  .nav-item.dropdown:hover .dropdown-menu {
+    position: absolute;
+    right: 0; /* Align to the right on smaller screens */
+    top: 100%;
+    margin-top: 10px;
+    background-color: black;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Optional: Adjust dropdown styling
+.dropdown-menu {
+  background-color: black;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+} */
+
+.dropdown-item:hover {
+  background-color: transparent;
+}
+
+
 
 /* CSS for hover effect on larger screens */
 @media (min-width: 100px) {
@@ -282,7 +322,7 @@ header {
 
 .navbar.navbar-light .navbar-nav .nav-link:hover   {
   color: #b90e0e; /* Change color on hover */
-
+  
 }}
 
 /* Hover effect on headings */
@@ -300,10 +340,10 @@ h4:hover {
   color: #b90e0e; /* Change color on hover */
 }
 
-.error-message {
+/* .error-message {
   color: red;
   font-size: 0.8em;
-}
+} */
 .invalid-input {
   border: 1px solid red;
 }
@@ -356,3 +396,18 @@ h6{
 h6:hover {
   color: #b90e0e; /* Change color on hover */
 }
+
+
+i{
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+i:hover {
+  color: #b90e0e; /* Change color on hover */
+}
+
+.statusMessageContainer{
+  border-radius: 20px; /* Adjust the value as needed */
+  padding: 10px ;
+  color: #000000;
+}
+
