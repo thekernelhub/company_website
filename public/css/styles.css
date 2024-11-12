@@ -291,16 +291,16 @@ header {
 }
 
 /* Small screens: Align dropdown to the right */
-@media (max-width: 991px) {
+/* @media (max-width: 991px) {
   .nav-item.dropdown:hover .dropdown-menu {
     position: absolute;
     right: 0; /* Align to the right on smaller screens */
-    top: 100%;
+    /* top: 100%;
     margin-top: 10px;
     background-color: black;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   }
-}
+} */
 
 /* Optional: Adjust dropdown styling
 .dropdown-menu {
